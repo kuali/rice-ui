@@ -14,5 +14,13 @@
   "bugs": {
     "url": "https://github.com/kuali/rice-ui/issues"
   },
-  "homepage": "https://github.com/kuali/rice-ui"
+  "homepage": "https://github.com/kuali/rice-ui",
+  "devDependencies": {
+    "browser-sync-instance": "git://github.com/basham/browser-sync-instance",
+    "gulp": "^3.8.8",
+    "gulp-concat": "^2.4.0",
+    "gulp-rimraf": "^0.1.0",
+    "require-directory": "^2.0.0",
+    "run-sequence": "^0.3.6"
+  }
 }
