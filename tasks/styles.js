@@ -1,25 +1,31 @@
 var gulp = require('gulp');
-var merge = require('merge-stream');
+var filter = require('gulp-filter');
+var debug = require('gulp-debug');
 var less = require('gulp-less');
 var prefix = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
-var proxy = require('browser-sync-instance')('proxy');
+var browserSync = require('browser-sync');
 
 gulp.task('styles', function() {
+  var lessFilter = filter('**/*.less');
 
-  var vendor = gulp.src([
-      'src/**/*.css',
-      '!jquery.fancybox-*.css',
-      '!jquery.dataTables.css',
-      '!jquery.fileupload-ui.css'
-    ]);
-
-  var source = gulp.src('src/main/webapp/themes/kboot/stylesheets/kboot.less')
-    .pipe(less());
-
-  return merge(vendor, source)
+  return gulp.src([
+      // Vendor
+      'src/main/**/*.css',
+      '!**/jquery.fancybox-*.css',
+      '!**/jquery.dataTables.css',
+      '!**/jquery.fileupload-ui.css',
+      // Theme
+      'src/main/webapp/themes/kboot/stylesheets/kboot.less',
+      // Refactor
+      'src/styles/main.less'
+    ])
+    .pipe(lessFilter)
+    .pipe(less())
+    .pipe(lessFilter.restore())
+    .pipe(debug())
     .pipe(prefix())
     .pipe(concat('bundle.css'))
     .pipe(gulp.dest('./dist/assets'))
-    .pipe(proxy.reload({ stream: true }));
+    .pipe(browserSync.reload({ stream: true }));
 });

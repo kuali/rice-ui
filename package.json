@@ -16,14 +16,18 @@
   },
   "homepage": "https://github.com/kuali/rice-ui",
   "devDependencies": {
+    "browser-sync": "^1.4.0",
     "browser-sync-instance": "git://github.com/basham/browser-sync-instance",
     "gulp": "^3.8.8",
     "gulp-autoprefixer": "^1.0.0",
     "gulp-concat": "^2.4.0",
+    "gulp-debug": "^1.0.1",
+    "gulp-filter": "^1.0.2",
     "gulp-less": "^1.3.5",
+    "gulp-replace": "^0.4.0",
     "gulp-rimraf": "^0.1.0",
-    "merge-stream": "^0.1.5",
     "require-directory": "^2.0.0",
-    "run-sequence": "^0.3.6"
+    "run-sequence": "^0.3.6",
+    "static-krad-sampleapp": "git://github.com/ksux/static-krad-sampleapp"
   }
 }
