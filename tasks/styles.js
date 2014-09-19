@@ -4,6 +4,9 @@ var order = require('gulp-order');
 var debug = require('gulp-debug');
 var less = require('gulp-less');
 var prefix = require('gulp-autoprefixer');
+var rebase = require('gulp-css-rebase-urls');
+var replace = require('gulp-replace');
+var csso = require('gulp-csso');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync');
 
@@ -48,10 +51,18 @@ gulp.task('styles', function() {
     .pipe(order(srcOrder))
     // Post-processor transformations.
     .pipe(prefix())
+    // Cleanup some comments that will cause Rebase to error.
+    .pipe(csso())
+    .pipe(concat('bundle.css'))
+    .pipe(rebase())
+    .pipe(replace(/src\/main\/webapp\//g, ''))
+    // Fix output from Rebase.
+    //.pipe(csso())
     // Confirm the source order via terminal log.
     .pipe(debug())
+
     // Output bundled styles.
-    .pipe(concat('bundle.css'))
+
     .pipe(gulp.dest('./dist/assets'))
     // Inject CSS into browser.
     .pipe(browserSync.reload({ stream: true }));

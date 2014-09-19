@@ -12,7 +12,7 @@ var replace = require('gulp-replace');
 // ./src/main/webapp/themes/kboot isn't duplicated.
 //
 
-gulp.task('copy', function() {
+gulp.task('copy-source', function() {
   //var htmlFilter = filter('**/*.html');
 
   return gulp.src('./node_modules/static-krad-sampleapp/krad-sampleapp/**/*')
