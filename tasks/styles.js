@@ -54,15 +54,13 @@ gulp.task('styles', function() {
     // Cleanup some comments that will cause Rebase to error.
     .pipe(csso())
     .pipe(concat('bundle.css'))
-    .pipe(rebase())
-    .pipe(replace(/src\/main\/webapp\//g, ''))
+    //.pipe(rebase())
+    //.pipe(replace(/src\/main\/webapp\//g, ''))
     // Fix output from Rebase.
     //.pipe(csso())
     // Confirm the source order via terminal log.
     .pipe(debug())
-
     // Output bundled styles.
-
     .pipe(gulp.dest('./dist/assets'))
     // Inject CSS into browser.
     .pipe(browserSync.reload({ stream: true }));
