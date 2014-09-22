@@ -17,7 +17,6 @@
   "homepage": "https://github.com/kuali/rice-ui",
   "devDependencies": {
     "browser-sync": "^1.4.0",
-    "browser-sync-instance": "git://github.com/basham/browser-sync-instance",
     "gulp": "^3.8.8",
     "gulp-autoprefixer": "^1.0.0",
     "gulp-concat": "^2.4.0",
