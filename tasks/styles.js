@@ -52,7 +52,7 @@ gulp.task('styles', function() {
     // Post-processor transformations.
     .pipe(prefix())
     // Cleanup some comments that will cause Rebase to error.
-    .pipe(csso())
+    //.pipe(csso())
     .pipe(concat('bundle.css'))
     //.pipe(rebase())
     //.pipe(replace(/src\/main\/webapp\//g, ''))
